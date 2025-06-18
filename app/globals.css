@@ -4,6 +4,7 @@
 
 @layer base {
   :root {
+    --font-inter: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
@@ -63,105 +64,301 @@
   * {
     @apply border-border;
   }
+  
+  html {
+    font-family: var(--font-inter), 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-inter), 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Ensure headings use Inter with proper weights */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-inter), 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.2;
+    font-weight: 600;
+  }
+  
+  /* Ensure buttons and form elements use Inter */
+  button, input, textarea, select {
+    font-family: var(--font-inter), 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  
+  /* Ensure all text elements use Inter */
+  p, span, div, a {
+    font-family: var(--font-inter), 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
 }
 
+/* Enhanced Universal Responsive Design Utilities */
 @layer utilities {
+  /* Responsive typography that uses Inter font */
+  .text-fluid-xs {
+    font-size: clamp(0.75rem, 2vw, 0.875rem);
+    font-family: var(--font-inter), 'Inter', sans-serif;
+  }
+  
+  .text-fluid-sm {
+    font-size: clamp(0.875rem, 2.2vw, 1rem);
+    font-family: var(--font-inter), 'Inter', sans-serif;
+  }
+  
+  .text-fluid-base {
+    font-size: clamp(1rem, 2.5vw, 1.125rem);
+    font-family: var(--font-inter), 'Inter', sans-serif;
+  }
+  
+  .text-fluid-lg {
+    font-size: clamp(1.125rem, 3vw, 1.25rem);
+    font-family: var(--font-inter), 'Inter', sans-serif;
+  }
+  
+  .text-fluid-xl {
+    font-size: clamp(1.25rem, 3.5vw, 1.5rem);
+    font-family: var(--font-inter), 'Inter', sans-serif;
+  }
+  
+  .text-fluid-2xl {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-family: var(--font-inter), 'Inter', sans-serif;
+  }
+  
+  .text-fluid-3xl {
+    font-size: clamp(1.875rem, 5vw, 2.5rem);
+    font-family: var(--font-inter), 'Inter', sans-serif;
+  }
+  
+  .text-fluid-4xl {
+    font-size: clamp(2.25rem, 6vw, 3rem);
+    font-family: var(--font-inter), 'Inter', sans-serif;
+    font-weight: 700;
+  }
+  
+  .text-fluid-5xl {
+    font-size: clamp(2.5rem, 7vw, 4rem);
+    font-family: var(--font-inter), 'Inter', sans-serif;
+    font-weight: 700;
+  }
+
+  /* Spacing utilities */
+  .spacing-fluid-xs {
+    @apply p-2 sm:p-3 md:p-4 lg:p-5 xl:p-6 2xl:p-7;
+  }
+  
+  .spacing-fluid-sm {
+    @apply p-3 sm:p-4 md:p-5 lg:p-6 xl:p-7 2xl:p-8;
+  }
+  
+  .spacing-fluid-md {
+    @apply p-4 sm:p-5 md:p-6 lg:p-7 xl:p-8 2xl:p-10;
+  }
+  
+  .spacing-fluid-lg {
+    @apply p-5 sm:p-6 md:p-8 lg:p-10 xl:p-12 2xl:p-16;
+  }
+
+  /* Gap utilities */
+  .gap-fluid-xs {
+    @apply gap-2 sm:gap-3 md:gap-4 lg:gap-5 xl:gap-6 2xl:gap-7;
+  }
+  
+  .gap-fluid-sm {
+    @apply gap-3 sm:gap-4 md:gap-5 lg:gap-6 xl:gap-7 2xl:gap-8;
+  }
+  
+  .gap-fluid-md {
+    @apply gap-4 sm:gap-5 md:gap-6 lg:gap-7 xl:gap-8 2xl:gap-10;
+  }
+  
+  .gap-fluid-lg {
+    @apply gap-5 sm:gap-6 md:gap-8 lg:gap-10 xl:gap-12 2xl:gap-16;
+  }
+
+  /* Responsive padding utilities */
+  .responsive-padding {
+    @apply px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16;
+  }
+  
+  .responsive-margin {
+    @apply mx-4 sm:mx-6 md:mx-8 lg:mx-10 xl:px-12 2xl:mx-16;
+  }
+
+  /* Responsive text utilities that preserve Inter font */
+  .text-responsive-sm {
+    @apply text-xs sm:text-sm;
+    font-family: var(--font-inter), 'Inter', sans-serif;
+  }
+  
+  .text-responsive-base {
+    @apply text-sm sm:text-base;
+    font-family: var(--font-inter), 'Inter', sans-serif;
+  }
+  
+  .text-responsive-lg {
+    @apply text-base sm:text-lg md:text-xl;
+    font-family: var(--font-inter), 'Inter', sans-serif;
+  }
+  
+  .text-responsive-xl {
+    @apply text-lg sm:text-xl md:text-2xl lg:text-3xl;
+    font-family: var(--font-inter), 'Inter', sans-serif;
+  }
+
+  /* Adaptive grid system */
+  .grid-adaptive-fill {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+  
+  .grid-adaptive-fit {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  
+  .grid-adaptive-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  }
+  
+  .grid-adaptive-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+  }
+
+  /* Device-specific breakpoints */
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .tablet-only {
+      display: block !important;
+    }
+    
+    .tablet-hidden {
+      display: none !important;
+    }
+    
+    .tablet-grid-2 {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+    
+    .tablet-grid-3 {
+      grid-template-columns: repeat(3, 1fr) !important;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+    .ipad-portrait-stack {
+      flex-direction: column !important;
+    }
+    
+    .ipad-portrait-full {
+      width: 100% !important;
+    }
+  }
+
+  /* Responsive visibility helpers */
+  .hide-below-sm {
+    @apply hidden sm:block;
+  }
+  
+  .hide-below-md {
+    @apply hidden md:block;
+  }
+  
+  .hide-below-lg {
+    @apply hidden lg:block;
+  }
+  
+  .show-below-sm {
+    @apply block sm:hidden;
+  }
+  
+  .show-below-md {
+    @apply block md:hidden;
+  }
+  
+  .show-below-lg {
+    @apply block lg:hidden;
+  }
+
+  /* Responsive card utilities */
+  .card-fluid {
+    @apply rounded-lg sm:rounded-xl lg:rounded-2xl;
+    padding: clamp(1rem, 3vw, 2rem);
+  }
+  
+  .card-shadow-responsive {
+    @apply shadow-md sm:shadow-lg lg:shadow-xl;
+  }
+
+  /* Responsive border radius */
+  .rounded-responsive {
+    border-radius: clamp(0.5rem, 2vw, 1rem);
+  }
+  
+  .rounded-responsive-lg {
+    border-radius: clamp(0.75rem, 2.5vw, 1.5rem);
+  }
+
+  /* Touch-friendly responsive elements */
+  .touch-target-responsive {
+    min-height: clamp(40px, 8vw, 48px);
+    min-width: clamp(40px, 8vw, 48px);
+  }
+
+  /* Safe area support */
+  .safe-area-top {
+    padding-top: max(1rem, env(safe-area-inset-top));
+  }
+  
+  .safe-area-bottom {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+
+  /* Performance optimizations */
+  .gpu-accelerated {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+  /* Height utilities */
+  .h-screen-adaptive {
+    height: 100vh;
+    height: 100dvh;
+  }
+  
+  .min-h-screen-adaptive {
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
+  /* Responsive animations */
   .animate-fade-in {
-    animation: fadeIn 0.3s ease-in-out;
+    animation: fadeIn 0.6s ease-out forwards;
   }
 
-  .animate-scale-in {
-    animation: scaleIn 0.2s ease-out;
+  .animate-fade-in-slow {
+    animation: fadeIn 1s ease-out forwards;
   }
 
-  .custom-scrollbar {
-    scrollbar-width: thin;
-    scrollbar-color: rgb(156 163 175) transparent;
-  }
-
-  .custom-scrollbar::-webkit-scrollbar {
-    width: 6px;
-  }
-
-  .custom-scrollbar::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  .custom-scrollbar::-webkit-scrollbar-thumb {
-    background-color: rgb(156 163 175);
-    border-radius: 3px;
-  }
-
-  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background-color: rgb(107 114 128);
-  }
-}
-
-@keyframes fadeIn {
-  from {
+  .animate-fade-in-delayed-slow {
+    animation: fadeIn 1s ease-out 0.3s forwards;
     opacity: 0;
-    transform: translateY(-10px);
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
-@keyframes scaleIn {
-  from {
+  .animate-slide-down-slow {
+    animation: slideDown 0.8s ease-out forwards;
+  }
+
+  .content-reveal {
+    animation: fadeIn 0.8s ease-out 0.6s forwards;
     opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* Fix for text cutting issues */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  line-height: 1.2;
-  padding-bottom: 2px;
-}
-
-/* Ensure proper text rendering */
-.text-gradient {
-  -webkit-background-clip: text;
-  background-clip: text;
-  line-height: 1.2;
-  padding-bottom: 2px;
-}
-
-@layer utilities {
-  .line-clamp-1 {
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .line-clamp-2 {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .line-clamp-3 {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
   }
 }
 
@@ -186,30 +383,13 @@ h6 {
   -webkit-backdrop-filter: blur(4px);
 }
 
-/* Enhanced animations for professional appeal */
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Improve touch scrolling on iOS */
+* {
+  -webkit-overflow-scrolling: touch;
 }
 
-@keyframes slide-down {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slide-up {
+/* Enhanced animations */
+@keyframes fadeIn {
   from {
     opacity: 0;
     transform: translateY(20px);
@@ -220,215 +400,7 @@ h6 {
   }
 }
 
-@keyframes scale-in {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes gradient-x {
-  0%,
-  100% {
-    transform: translateX(-100%);
-  }
-  50% {
-    transform: translateX(100%);
-  }
-}
-
-@keyframes pulse-glow {
-  0%,
-  100% {
-    box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
-  }
-  50% {
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
-  }
-}
-
-/* Animation classes */
-.animate-fade-in-delayed {
-  animation: fade-in 0.8s ease-out 0.2s forwards;
-  opacity: 0;
-}
-
-.animate-slide-down {
-  animation: slide-down 0.6s ease-out forwards;
-}
-
-.animate-slide-up {
-  animation: slide-up 0.6s ease-out forwards;
-}
-
-.animate-slide-up-delayed {
-  animation: slide-up 0.8s ease-out 0.4s forwards;
-  opacity: 0;
-}
-
-.animate-gradient-x {
-  animation: gradient-x 3s ease infinite;
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
-}
-
-/* FAST WEBSITE ANIMATIONS - For general UI interactions */
-@keyframes fade-in-fast {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slide-down-fast {
-  from {
-    opacity: 0;
-    transform: translateY(-15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slide-up-fast {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes scale-in-fast {
-  from {
-    opacity: 0;
-    transform: scale(0.96);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* FAST ANIMATION CLASSES - For general website interactions */
-.animate-fade-in {
-  animation: fade-in-fast 0.2s ease-out forwards;
-}
-
-.animate-fade-in-delayed {
-  animation: fade-in-fast 0.3s ease-out 0.1s forwards;
-  opacity: 0;
-}
-
-.animate-slide-down {
-  animation: slide-down-fast 0.3s ease-out forwards;
-}
-
-.animate-slide-up {
-  animation: slide-up-fast 0.3s ease-out forwards;
-}
-
-.animate-slide-up-delayed {
-  animation: slide-up-fast 0.4s ease-out 0.2s forwards;
-  opacity: 0;
-}
-
-.animate-scale-in {
-  animation: scale-in-fast 0.2s ease-out forwards;
-}
-
-/* Fast content reveal for loaded content */
-.content-reveal-fast {
-  animation: content-reveal-fast 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-  opacity: 0;
-}
-
-@keyframes content-reveal-fast {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Fast staggered animations */
-.animate-stagger-fast > * {
-  animation: fade-in-fast 0.3s ease-out forwards;
-  opacity: 0;
-}
-
-.animate-stagger-fast > *:nth-child(1) { animation-delay: 0.05s; }
-.animate-stagger-fast > *:nth-child(2) { animation-delay: 0.1s; }
-.animate-stagger-fast > *:nth-child(3) { animation-delay: 0.15s; }
-.animate-stagger-fast > *:nth-child(4) { animation-delay: 0.2s; }
-.animate-stagger-fast > *:nth-child(5) { animation-delay: 0.25s; }
-.animate-stagger-fast > *:nth-child(6) { animation-delay: 0.3s; }
-.animate-stagger-fast > *:nth-child(7) { animation-delay: 0.35s; }
-.animate-stagger-fast > *:nth-child(8) { animation-delay: 0.4s; }
-.animate-stagger-fast > *:nth-child(9) { animation-delay: 0.45s; }
-
-/* SLOW LOADING ANIMATIONS - Only for loading states */
-.loading-fade-in-slow {
-  animation: fade-in-slow 1.2s ease-out forwards;
-  opacity: 0;
-}
-
-.loading-fade-in-delayed-slow {
-  animation: fade-in-slow 1.5s ease-out 0.3s forwards;
-  opacity: 0;
-}
-
-.loading-slide-down-slow {
-  animation: slide-down-slow 1s ease-out forwards;
-  opacity: 0;
-}
-
-.loading-slide-up-slow {
-  animation: slide-up-slow 1s ease-out forwards;
-  opacity: 0;
-}
-
-.loading-stagger > * {
-  animation: fade-in-slow 0.8s ease-out forwards;
-  opacity: 0;
-}
-
-.loading-stagger > *:nth-child(1) { animation-delay: 0.1s; }
-.loading-stagger > *:nth-child(2) { animation-delay: 0.2s; }
-.loading-stagger > *:nth-child(3) { animation-delay: 0.3s; }
-.loading-stagger > *:nth-child(4) { animation-delay: 0.4s; }
-.loading-stagger > *:nth-child(5) { animation-delay: 0.5s; }
-.loading-stagger > *:nth-child(6) { animation-delay: 0.6s; }
-
-/* Keep the slow keyframes for loading only */
-@keyframes fade-in-slow {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slide-down-slow {
+@keyframes slideDown {
   from {
     opacity: 0;
     transform: translateY(-30px);
@@ -439,220 +411,361 @@ h6 {
   }
 }
 
-@keyframes slide-up-slow {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+/* Fix for text cutting issues with Inter */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+  padding-bottom: 2px;
+}
+
+/* Ensure proper text rendering for gradients with Inter */
+.text-gradient {
+  -webkit-background-clip: text;
+  background-clip: text;
+  line-height: 1.2;
+  padding-bottom: 2px;
+  font-family: var(--font-inter), 'Inter', sans-serif;
+}
+
+/* Prevent zoom on iOS when focusing inputs */
+@media screen and (max-width: 768px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  textarea,
+  select {
+    font-size: 16px !important;
+    font-family: var(--font-inter), 'Inter', sans-serif;
   }
 }
 
-/* Custom scrollbar for issues container */
+/* Animation adjustments for performance */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in,
+  .animate-scale-in,
+  .animate-slide-down-slow {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* Ensure all components inherit Inter font */
+.card, .button, .input, .textarea, .select {
+  font-family: var(--font-inter), 'Inter', sans-serif;
+}
+
+/* Custom scrollbar with Inter font context */
 .custom-scrollbar {
   scrollbar-width: thin;
-  scrollbar-color: rgba(156, 163, 175, 0.6) rgba(243, 244, 246, 0.1);
-  scroll-behavior: smooth;
+  scrollbar-color: rgb(156 163 175) transparent;
+  font-family: var(--font-inter), 'Inter', sans-serif;
 }
 
 .custom-scrollbar::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 4px;
+}
+
+@media (min-width: 768px) {
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: rgba(243, 244, 246, 0.1);
-  border-radius: 4px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(156, 163, 175, 0.6);
-  border-radius: 4px;
-  transition: all 0.2s ease;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(156, 163, 175, 0.8);
-  transform: scale(1.1);
-}
-
-.custom-scrollbar::-webkit-scrollbar-corner {
   background: transparent;
 }
 
-/* Dark theme scrollbar */
-.dark .custom-scrollbar {
-  scrollbar-color: rgba(75, 85, 99, 0.6) rgba(31, 41, 55, 0.1);
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgb(156 163 175);
+  border-radius: 3px;
 }
 
-.dark .custom-scrollbar::-webkit-scrollbar-track {
-  background: rgba(31, 41, 55, 0.1);
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(107 114 128);
 }
 
-.dark .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(75, 85, 99, 0.6);
-}
+/* Additional responsive breakpoint for extra small devices */
+@layer utilities {
+  /* Extra small devices (phones < 475px) */
+  @screen xs {
+    .xs\:grid-cols-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    
+    .xs\:flex-row {
+      flex-direction: row;
+    }
+    
+    .xs\:items-center {
+      align-items: center;
+    }
+    
+    .xs\:col-span-2 {
+      grid-column: span 2 / span 2;
+    }
+    
+    .xs\:self-center {
+      align-self: center;
+    }
+  }
 
-.dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(75, 85, 99, 0.8);
-}
+  /* Enhanced grid for stats cards */
+  .grid-adaptive-stats {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  @media (min-width: 640px) {
+    .grid-adaptive-stats {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .grid-adaptive-stats {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
 
-/* Force scrollable behavior */
-.force-scroll {
-  overflow-y: scroll !important;
-  max-height: 100% !important;
-}
+  /* Responsive container for charts */
+  .chart-container-responsive {
+    width: 100%;
+    aspect-ratio: 1;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+  
+  @media (min-width: 640px) {
+    .chart-container-responsive {
+      max-width: 400px;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .chart-container-responsive {
+      max-width: 360px;
+    }
+  }
+  
+  @media (min-width: 1280px) {
+    .chart-container-responsive {
+      max-width: 400px;
+    }
+  }
 
-/* Responsive scrolling */
-@media (max-width: 768px) {
-  .custom-scrollbar::-webkit-scrollbar {
-    width: 4px;
+  /* Mobile-first order utilities */
+  .order-mobile-1 {
+    order: 1;
+  }
+  
+  .order-mobile-2 {
+    order: 2;
+  }
+  
+  @media (min-width: 1024px) {
+    .lg\:order-1 {
+      order: 1;
+    }
+    
+    .lg\:order-2 {
+      order: 2;
+    }
+  }
+
+  /* Enhanced text truncation for mobile */
+  .line-clamp-1 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
+  
+  .line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  /* Dynamic spacing based on screen size */
+  .space-y-responsive > :not([hidden]) ~ :not([hidden]) {
+    margin-top: 1rem;
+  }
+  
+  @media (min-width: 640px) {
+    .space-y-responsive > :not([hidden]) ~ :not([hidden]) {
+      margin-top: 1.5rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .space-y-responsive > :not([hidden]) ~ :not([hidden]) {
+      margin-top: 2rem;
+    }
   }
 }
 
-/* Ensure content can scroll */
-.scrollable-content {
-  height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
+/* Add xs breakpoint to Tailwind */
+@media (min-width: 475px) {
+  .xs\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  
+  .xs\:flex-row {
+    flex-direction: row;
+  }
+  
+  .xs\:items-center {
+    align-items: center;
+  }
+  
+  .xs\:col-span-2 {
+    grid-column: span 2 / span 2;
+  }
 }
-
-/* Modal backdrop styles */
-.modal-backdrop {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  width: 100vw !important;
-  height: 100vh !important;
-  z-index: 100;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  background: rgba(0, 0, 0, 0.2);
-}
-
-/* Enhanced modal animations */
-@keyframes modal-fade-in {
-  from {
+@layer utilities {
+  /* Enhanced responsive animations */
+  .content-reveal-fast {
+    animation: fadeIn 0.4s ease-out forwards;
     opacity: 0;
-    backdrop-filter: blur(0px);
   }
-  to {
-    opacity: 1;
-    backdrop-filter: blur(8px);
-  }
-}
 
-@keyframes modal-scale-in {
-  from {
+  .animate-stagger-fast > * {
+    animation: fadeIn 0.3s ease-out forwards;
     opacity: 0;
-    transform: scale(0.95) translateY(20px);
   }
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
+
+  .animate-stagger-fast > *:nth-child(1) { animation-delay: 0ms; }
+  .animate-stagger-fast > *:nth-child(2) { animation-delay: 100ms; }
+  .animate-stagger-fast > *:nth-child(3) { animation-delay: 200ms; }
+  .animate-stagger-fast > *:nth-child(4) { animation-delay: 300ms; }
+
+  /* Fix for scrollable containers */
+  .scrollable-container {
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
   }
-}
 
-.animate-modal-backdrop {
-  animation: modal-fade-in 0.2s ease-out forwards;
-}
-
-.animate-scale-in {
-  animation: modal-scale-in 0.3s ease-out forwards;
-}
-
-/* Ensure modal is above everything */
-.modal-container {
-  position: fixed !important;
-  inset: 0 !important;
-  z-index: 101 !important;
-}
-
-/* Body scroll lock when modal is open */
-body.modal-open {
-  overflow: hidden !important;
-  height: 100% !important;
-}
-
-/* Better backdrop blur support */
-@supports (backdrop-filter: blur(8px)) {
-  .modal-backdrop {
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+  .scrollable-content {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
-}
 
-@supports not (backdrop-filter: blur(8px)) {
-  .modal-backdrop {
-    background: rgba(0, 0, 0, 0.4);
+  /* Enhanced scrollbar styling */
+  .scroll-container {
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: auto;
+    scrollbar-color: rgb(156 163 175) rgb(243 244 246);
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
   }
-}
 
-/* Add these enhanced scrollbar styles */
+  /* Desktop scrollbar */
+  .scroll-container::-webkit-scrollbar {
+    width: 8px;
+  }
 
-/* Modal specific scrollbar - more visible */
-.modal-container .custom-scrollbar {
-  scrollbar-width: auto; /* Show normal width scrollbar in modals */
-  scrollbar-color: rgba(156, 163, 175, 0.8) rgba(243, 244, 246, 0.2);
-}
+  .scroll-container::-webkit-scrollbar-track {
+    background: rgb(243 244 246);
+    border-radius: 4px;
+  }
 
-.modal-container .custom-scrollbar::-webkit-scrollbar {
-  width: 10px; /* Slightly wider for better visibility */
-  height: 10px;
-}
+  .scroll-container::-webkit-scrollbar-thumb {
+    background-color: rgb(156 163 175);
+    border-radius: 4px;
+    border: 1px solid rgb(243 244 246);
+  }
 
-.modal-container .custom-scrollbar::-webkit-scrollbar-track {
-  background: rgba(243, 244, 246, 0.2);
-  border-radius: 5px;
-  margin: 4px 0; /* Add margin to track */
-}
+  .scroll-container::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(107 114 128);
+  }
 
-.modal-container .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(156, 163, 175, 0.8);
-  border-radius: 5px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.2s ease;
-}
+  /* Mobile scrollbar - more visible */
+  @media (max-width: 767px) {
+    .scroll-container {
+      scrollbar-width: auto;
+    }
+    
+    .scroll-container::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    .scroll-container::-webkit-scrollbar-track {
+      background: rgb(249 250 251);
+    }
+    
+    .scroll-container::-webkit-scrollbar-thumb {
+      background-color: rgb(107 114 128);
+      border-radius: 3px;
+      border: none;
+    }
+  }
 
-.modal-container .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(156, 163, 175, 1);
-  transform: none; /* Remove scale transform that might cause issues */
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
-}
+  /* Dark mode scrollbar */
+  .dark .scroll-container {
+    scrollbar-color: rgb(107 114 128) rgb(31 41 55);
+  }
 
-/* Dark theme scrollbar for modals */
-.dark .modal-container .custom-scrollbar {
-  scrollbar-color: rgba(75, 85, 99, 0.8) rgba(31, 41, 55, 0.2);
-}
+  .dark .scroll-container::-webkit-scrollbar-track {
+    background: rgb(31 41 55);
+  }
 
-.dark .modal-container .custom-scrollbar::-webkit-scrollbar-track {
-  background: rgba(31, 41, 55, 0.2);
-}
+  .dark .scroll-container::-webkit-scrollbar-thumb {
+    background-color: rgb(107 114 128);
+    border-color: rgb(31 41 55);
+  }
 
-.dark .modal-container .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(75, 85, 99, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
+  .dark .scroll-container::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(156 163 175);
+  }
 
-.dark .modal-container .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(75, 85, 99, 1);
-  box-shadow: 0 0 4px rgba(255, 255, 255, 0.1);
-}
+  /* Mobile dark mode */
+  @media (max-width: 767px) {
+    .dark .scroll-container::-webkit-scrollbar-track {
+      background: rgb(17 24 39);
+    }
+    
+    .dark .scroll-container::-webkit-scrollbar-thumb {
+      background-color: rgb(156 163 175);
+    }
+  }
 
-/* Force show scrollbar when content overflows */
-.scrollable-content {
-  overflow-y: scroll !important; /* Force scrollbar to always show */
-  overflow-x: hidden;
-  height: 100%;
-}
+  /* Ensure proper grid layout on mobile */
+  .grid-mobile-responsive {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
 
-/* Ensure scrollable area has enough content to trigger scroll */
-@media (max-height: 800px) {
-  .modal-container .scrollable-content {
-    min-height: 500px; /* Ensure minimum height to trigger scroll on smaller screens */
+  @media (min-width: 640px) {
+    .grid-mobile-responsive {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .grid-mobile-responsive {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .grid-mobile-responsive {
+      grid-template-columns: repeat(4, 1fr);
+    }
   }
 }

@@ -66,7 +66,6 @@ export function IssuesPage() {
   // Enhanced loading sequence
   useEffect(() => {
     if (localStorageMounted && themeMounted) {
-      // Simulate data processing and preparation time
       const timer = setTimeout(() => setContentLoaded(true), 1500)
       return () => clearTimeout(timer)
     }
@@ -91,7 +90,6 @@ export function IssuesPage() {
     exportToJSON(processedIssues, projects, currentProject, showAllProjects)
   }
 
-  // Utility functions for styling
   const getSeverityColor = (severity: string) => {
     const colors = {
       critical: "from-red-500 to-red-600",
@@ -122,9 +120,9 @@ export function IssuesPage() {
   }
 
   const pageContent = (
-    <div className="flex flex-col h-full max-h-screen animate-stagger-fast">
-      {/* Fixed Header Section - Fast animations for loaded content */}
-      <div className="flex-shrink-0 space-y-6 pb-6">
+    <div className="flex flex-col h-[calc(100vh-2rem)] animate-stagger-fast">
+      {/* Fixed Header Section */}
+      <div className="flex-shrink-0 space-y-4 pb-4">
         <div className="animate-slide-down">
           <IssuesHeader
             showAllProjects={showAllProjects}
@@ -159,17 +157,17 @@ export function IssuesPage() {
       </div>
 
       {/* Scrollable Issues Container */}
-      <div className="flex-1 min-h-0 overflow-hidden">
-        <Card className="border-0 shadow-xl bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl h-full">
-          <CardContent className="p-0 h-full flex flex-col">
+      <div className="flex-1 min-h-0">
+        <Card className="border-0 shadow-xl bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl h-full flex flex-col">
+          <CardContent className="p-0 flex-1 flex flex-col">
             {/* Container Header */}
-            <div className="flex-shrink-0 px-6 py-4 border-b border-gray-200/50 dark:border-gray-700/50">
+            <div className="flex-shrink-0 px-4 py-3 border-b border-gray-200/50 dark:border-gray-700/50 sm:px-6 sm:py-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                  <h3 className="text-base font-semibold text-gray-900 dark:text-white sm:text-lg">
                     Issues {viewMode === "grid" ? "Grid" : "List"}
                   </h3>
-                  <span className="text-sm text-gray-500 dark:text-gray-400">
+                  <span className="text-xs text-gray-500 dark:text-gray-400 sm:text-sm">
                     ({processedIssues.length} {processedIssues.length === 1 ? 'issue' : 'issues'})
                   </span>
                 </div>
@@ -184,20 +182,23 @@ export function IssuesPage() {
 
             {/* Scrollable Content Area */}
             <div 
-              className="flex-1 overflow-y-auto px-6 py-4 custom-scrollbar"
+              className="flex-1 overflow-y-auto px-4 py-4 custom-scrollbar touch-auto sm:px-6"
               style={{ 
-                maxHeight: 'calc(100vh - 500px)', // Adjust based on your header height
-                minHeight: '400px'
+                minHeight: '200px',
+                maxHeight: 'calc(100vh - 30rem)', // Adjust for header and padding
+                WebkitOverflowScrolling: 'touch',
+                overscrollBehavior: 'contain',
+                overflowX: 'hidden'
               }}
             >
               {processedIssues.length === 0 ? (
-                <div className="flex items-center justify-center h-full min-h-[300px]">
+                <div className="flex items-center justify-center h-full min-h-[200px] sm:min-h-[300px]">
                   <div className="text-center animate-fade-in">
-                    <div className="p-4 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl w-fit mx-auto mb-6">
-                      <AlertTriangle className="h-12 w-12 text-white" />
+                    <div className="p-3 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl w-fit mx-auto mb-4 sm:p-4 sm:mb-6">
+                      <AlertTriangle className="h-10 w-10 text-white sm:h-12 sm:w-12" />
                     </div>
-                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">No issues found</h3>
-                    <p className="text-gray-600 dark:text-gray-400 max-w-md mx-auto">
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 sm:text-2xl sm:mb-3">No issues found</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 max-w-[90%] mx-auto sm:text-base sm:max-w-md">
                       Try adjusting your search criteria or filters to find issues.
                     </p>
                   </div>
@@ -233,7 +234,7 @@ export function IssuesPage() {
         </Card>
       </div>
 
-      {/* Render modal using portal to ensure it's above everything */}
+      {/* Render modal using portal */}
       {mounted && selectedIssue && createPortal(
         <IssueModal 
           issue={selectedIssue} 
@@ -248,7 +249,7 @@ export function IssuesPage() {
   return (
     <PageWrapper 
       skeleton={<IssuesPageSkeleton />}
-      className="h-screen overflow-hidden p-4 md:p-6 lg:p-8"
+      className="h-screen overflow-hidden p-2 sm:p-4 md:p-6 lg:p-8"
     >
       {(!localStorageMounted || !themeMounted || !contentLoaded) ? (
         <IssuesPageSkeleton />

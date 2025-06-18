@@ -19,6 +19,8 @@ import {
   Award,
   Calendar,
   ExternalLink,
+  Eye,
+  MoreVertical
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -269,85 +271,85 @@ export function ReportsPage() {
       </div>
 
       {/* Recent Report Activity */}
-      <Card className="border-0 shadow-xl bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl animate-fade-in">
-        <CardHeader className="pb-4">
-          <div className="flex items-center justify-between">
-            <CardTitle className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
-              <div className="p-2 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl">
-                <FileText className="h-6 w-6 text-white" />
-              </div>
-              Recent Report Activity
-            </CardTitle>
-            <Button
-              variant="outline"
-              className="hover:bg-blue-50 hover:border-blue-200 hover:text-blue-600 dark:hover:bg-blue-900/20"
-            >
-              View All Reports
-            </Button>
-          </div>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          {recentReports.map((report, index) => (
-            <div
-              key={report.id}
-              className="group flex items-center justify-between p-6 rounded-xl bg-gray-50/80 dark:bg-gray-800/50 hover:bg-gray-100/80 dark:hover:bg-gray-700/50 transition-all duration-200 hover:scale-[1.02] animate-fade-in border border-gray-200/50 dark:border-gray-700/50"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <div className="flex items-center gap-4 flex-1 min-w-0">
-                <div className="p-3 bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200/50 dark:border-gray-700/50">
-                  <FileText className="h-5 w-5 text-gray-600 dark:text-gray-400" />
+    <Card className="border-0 shadow-xl bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl animate-fade-in">
+          <CardHeader className="pb-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <CardTitle className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
+                <div className="p-2 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl">
+                  <FileText className="h-5 w-6 text-white" />
                 </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 mb-1">
-                    <h4 className="font-semibold text-gray-900 dark:text-white truncate">{report.title}</h4>
-                    <Badge
-                      className={cn(
-                        "font-medium",
-                        report.type === "Compliance"
-                          ? "bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400"
-                          : report.type === "Issues"
-                            ? "bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400"
-                            : report.type === "Audit"
-                              ? "bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400"
-                              : "bg-purple-100 text-purple-800 dark:bg-purple-900/20 dark:text-purple-400",
-                      )}
-                    >
-                      {report.type}
-                    </Badge>
-                  </div>
-                  <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
-                    <div className="flex items-center gap-1">
-                      <Calendar className="h-3 w-3" />
-                      <span>{report.timestamp}</span>
-                    </div>
-                    <span>•</span>
-                    <span>{report.size}</span>
-                    <span>•</span>
-                    <span className="font-medium">{report.format}</span>
-                  </div>
-                </div>
-              </div>
-              <div className="flex items-center gap-2">
-                <Button
-                  size="sm"
-                  onClick={() => handleDownloadReport(report)}
-                  className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 px-6 py-2 font-semibold"
-                >
-                  <Download className="h-4 w-4 mr-2" />
-                  Download
-                </Button>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="opacity-0 group-hover:opacity-100 transition-opacity hover:bg-gray-200 dark:hover:bg-gray-700"
-                >
-                  <ExternalLink className="h-4 w-4" />
-                </Button>
-              </div>
+                Recent Report Activity
+              </CardTitle>
+              {/* <Button
+                variant="outline"
+                className="hover:bg-blue-50 hover:border-blue-200 hover:text-blue-600 dark:hover:bg-blue-900/20 self-start sm:self-auto"
+              >
+                View All Reports
+              </Button> */}
             </div>
-          ))}
-        </CardContent>
-      </Card>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            {recentReports.map((report, index) => (
+              <div
+                key={report.id}
+                className="group relative flex flex-col sm:flex-row sm:items-center gap-4 p-4 md:p-6 rounded-xl bg-gray-50/80 dark:bg-gray-800/50 hover:bg-gray-100/80 dark:hover:bg-gray-700/50 transition-all duration-200 hover:shadow-md border border-gray-200/50 dark:border-gray-700/50"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                {/* Report Info */}
+                <div className="flex items-start gap-4 flex-1 min-w-0">
+                  <div className="p-3 bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200/50 dark:border-gray-700/50 flex-shrink-0">
+                    <FileText className="h-5 w-5 text-gray-600 dark:text-gray-400" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-2">
+                      <h4 className="font-semibold text-gray-900 dark:text-white text-sm md:text-base line-clamp-2">
+                        {report.title}
+                      </h4>
+                      <Badge
+                        className={cn(
+                          "font-medium text-xs self-start sm:self-auto flex-shrink-0",
+                          report.type === "Compliance"
+                            ? "bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400"
+                            : report.type === "Issues"
+                              ? "bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400"
+                              : report.type === "Audit"
+                                ? "bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400"
+                                : "bg-purple-100 text-purple-800 dark:bg-purple-900/20 dark:text-purple-400",
+                        )}
+                      >
+                        {report.type}
+                      </Badge>
+                    </div>
+                    <div className="flex flex-wrap items-center gap-2 md:gap-4 text-xs md:text-sm text-gray-600 dark:text-gray-400">
+                      <div className="flex items-center gap-1">
+                        <Calendar className="h-3 w-3 flex-shrink-0" />
+                        <span className="truncate">{report.timestamp}</span>
+                      </div>
+                      <span className="hidden sm:inline">•</span>
+                      <span className="font-medium">{report.size}</span>
+                      <span className="hidden sm:inline">•</span>
+                      <span className="font-medium text-blue-600 dark:text-blue-400">{report.format}</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex items-center justify-between sm:justify-end gap-2 sm:gap-3 pt-3 sm:pt-0 border-t sm:border-t-0 border-gray-200 dark:border-gray-700">
+                  
+                  <Button
+                    size="sm"
+                    onClick={() => handleDownloadReport(report)}
+                    className="flex-1 sm:flex-none bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white shadow-md hover:shadow-lg transition-all duration-200 px-4 py-2 font-medium"
+                  >
+                    <Download className="h-4 w-4 mr-2" />
+                    Download
+                  </Button>
+                  
+                </div>
+              </div>
+            ))}
+          </CardContent>
+        </Card>
 
       {/* WCAG Compliance Overview */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 animate-fade-in">

@@ -54,41 +54,45 @@ export function StatsCards() {
   ]
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div className="grid-adaptive-stats gap-fluid-sm sm:gap-fluid-md">
       {stats.map((stat, index) => (
         <Card
           key={stat.title}
           className={cn(
-            "relative overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 animate-fade-in bg-gradient-to-br",
+            "relative overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 animate-fade-in bg-gradient-to-br rounded-responsive-lg gpu-accelerated min-h-[120px] sm:min-h-[140px]",
             stat.bgColor,
           )}
           style={{ animationDelay: `${index * 100}ms` }}
         >
-          <CardContent className="p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-1">{stat.title}</p>
-                <div className="flex items-baseline gap-2">
-                  <h3 className="text-3xl font-bold text-gray-900 dark:text-white">{stat.value}</h3>
+          <CardContent className="spacing-fluid-xs sm:spacing-fluid-sm">
+            <div className="flex items-center justify-between h-full">
+              <div className="flex-1 min-w-0">
+                <p className="text-fluid-xs sm:text-fluid-sm font-medium text-gray-600 dark:text-gray-400 mb-1 sm:mb-2 truncate">
+                  {stat.title}
+                </p>
+                <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-2">
+                  <h3 className="text-fluid-2xl sm:text-fluid-3xl font-bold text-gray-900 dark:text-white">
+                    {stat.value}
+                  </h3>
                   <div
                     className={cn(
-                      "flex items-center text-xs font-medium px-2 py-1 rounded-full",
+                      "flex items-center text-xs font-medium px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full self-start sm:self-center flex-shrink-0",
                       stat.trend === "up"
                         ? "text-green-700 bg-green-100 dark:text-green-400 dark:bg-green-900/20"
                         : "text-red-700 bg-red-100 dark:text-red-400 dark:bg-red-900/20",
                     )}
                   >
                     {stat.trend === "up" ? (
-                      <TrendingUp className="h-3 w-3 mr-1" />
+                      <TrendingUp className="h-2.5 w-2.5 sm:h-3 sm:w-3 mr-0.5 sm:mr-1" />
                     ) : (
-                      <TrendingDown className="h-3 w-3 mr-1" />
+                      <TrendingDown className="h-2.5 w-2.5 sm:h-3 sm:w-3 mr-0.5 sm:mr-1" />
                     )}
-                    {stat.change}
+                    <span className="text-xs">{stat.change}</span>
                   </div>
                 </div>
               </div>
-              <div className={cn("p-3 rounded-xl bg-gradient-to-br shadow-lg", stat.color)}>
-                <stat.icon className="h-6 w-6 text-white" />
+              <div className={cn("p-2 sm:p-3 rounded-responsive bg-gradient-to-br shadow-lg flex-shrink-0 ml-2 sm:ml-3", stat.color)}>
+                <stat.icon className="h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6 text-white" />
               </div>
             </div>
 

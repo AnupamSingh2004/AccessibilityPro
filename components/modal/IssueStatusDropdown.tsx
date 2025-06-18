@@ -31,27 +31,36 @@ export function IssueStatusDropdown({ currentStatus, onStatusChange, getStatusCo
         variant="outline"
         size="sm"
         onClick={() => setShowDropdown(!showDropdown)}
-        className={`${getStatusColor(currentStatus)} hover:opacity-80 transition-opacity text-xs sm:text-sm`}
+        className={`${getStatusColor(currentStatus)} hover:opacity-80 transition-opacity text-xs sm:text-sm touch-target-responsive`}
       >
-        {currentStatus.replace('-', ' ').toUpperCase()}
-        <ChevronDown className="ml-1 h-3 w-3" />
+        <span className="truncate">{currentStatus.replace('-', ' ').toUpperCase()}</span>
+        <ChevronDown className="ml-1 h-3 w-3 flex-shrink-0" />
       </Button>
       
       {showDropdown && (
-        <div className="absolute top-full left-0 mt-1 w-40 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md shadow-lg z-50">
-          {statusOptions.map((option) => (
-            <button
-              key={option.value}
-              onClick={() => handleStatusChange(option.value)}
-              className={`w-full text-left px-3 py-2 text-sm hover:bg-gray-50 dark:hover:bg-gray-700 ${option.color} flex items-center justify-between`}
-            >
-              {option.label}
-              {currentStatus === option.value && (
-                <CheckCircle className="h-3 w-3" />
-              )}
-            </button>
-          ))}
-        </div>
+        <>
+          {/* Mobile backdrop */}
+          <div 
+            className="fixed inset-0 z-40 sm:hidden" 
+            onClick={() => setShowDropdown(false)}
+          />
+          
+          {/* Dropdown menu - responsive positioning */}
+          <div className="absolute top-full left-0 mt-1 w-40 sm:w-48 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-responsive shadow-lg z-50 max-h-60 overflow-y-auto">
+            {statusOptions.map((option) => (
+              <button
+                key={option.value}
+                onClick={() => handleStatusChange(option.value)}
+                className={`w-full text-left px-3 py-2.5 sm:py-2 text-sm hover:bg-gray-50 dark:hover:bg-gray-700 ${option.color} flex items-center justify-between touch-target-responsive`}
+              >
+                <span className="truncate">{option.label}</span>
+                {currentStatus === option.value && (
+                  <CheckCircle className="h-3 w-3 flex-shrink-0" />
+                )}
+              </button>
+            ))}
+          </div>
+        </>
       )}
     </div>
   )

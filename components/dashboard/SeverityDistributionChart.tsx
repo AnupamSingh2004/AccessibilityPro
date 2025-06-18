@@ -4,12 +4,27 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { useAccessibility } from "@/contexts/AccessibilityContext"
 import { useEffect, useState } from "react"
 
+// Define proper types
+interface SeverityConfig {
+  key: "critical" | "high" | "medium" | "low"
+  label: string
+  shortLabel: string
+  color: string
+  colorEnd: string
+  bgColor: string
+  borderColor: string
+}
+
+interface SeverityDataItem extends SeverityConfig {
+  count: number
+}
+
 export function SeverityDistributionChart() {
   const { issues } = useAccessibility()
   const [isAnimating, setIsAnimating] = useState(false)
   const [animationProgress, setAnimationProgress] = useState(0)
 
-  const severityConfig = [
+  const severityConfig: SeverityConfig[] = [
     {
       key: "critical",
       label: "Critical Issues",
@@ -48,7 +63,7 @@ export function SeverityDistributionChart() {
     },
   ]
 
-  const severityData = severityConfig.map(config => ({
+  const severityData: SeverityDataItem[] = severityConfig.map(config => ({
     ...config,
     count: issues.filter((i) => i.severity === config.key).length,
   }))
@@ -88,10 +103,20 @@ export function SeverityDistributionChart() {
     }
   }, [total])
 
-  const formatPercentage = (count) => {
+  const formatPercentage = (count: number): string => {
     if (total === 0) return '0%'
     return `${Math.round((count / total) * 100)}%`
   }
+
+  // Helper function to safely get count by severity key
+  const getCountBySeverity = (severityKey: SeverityConfig['key']): number => {
+    return severityData.find(s => s.key === severityKey)?.count ?? 0
+  }
+
+  // Calculate priority counts safely
+  const highPriorityCount = getCountBySeverity('critical') + getCountBySeverity('high')
+  const mediumPriorityCount = getCountBySeverity('medium')
+  const lowPriorityCount = getCountBySeverity('low')
 
   return (
     <div className="space-y-6">
@@ -281,19 +306,19 @@ export function SeverityDistributionChart() {
         <div className="text-center p-4 rounded-xl bg-gray-800/30 border border-gray-700/30">
           <div className="text-sm text-gray-400 mb-1">High Priority</div>
           <div className="text-3xl font-bold text-red-400">
-            {severityData.find(s => s.key === 'critical')?.count + severityData.find(s => s.key === 'high')?.count || 0}
+            {highPriorityCount}
           </div>
         </div>
         <div className="text-center p-4 rounded-xl bg-gray-800/30 border border-gray-700/30">
           <div className="text-sm text-gray-400 mb-1">Medium Priority</div>
           <div className="text-3xl font-bold text-yellow-400">
-            {severityData.find(s => s.key === 'medium')?.count || 0}
+            {mediumPriorityCount}
           </div>
         </div>
         <div className="text-center p-4 rounded-xl bg-gray-800/30 border border-gray-700/30">
           <div className="text-sm text-gray-400 mb-1">Low Priority</div>
           <div className="text-3xl font-bold text-blue-400">
-            {severityData.find(s => s.key === 'low')?.count || 0}
+            {lowPriorityCount}
           </div>
         </div>
       </div>
