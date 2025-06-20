@@ -32,15 +32,19 @@ A modern, responsive, and accessible React.js application for monitoring and imp
 
 ## 🎥 Demo Video
 
-file:///home/anupam/Videos/Video_2025-06-20_14-16-10.mp4
+[![Demo Video](https://img.shields.io/badge/▶️_Watch_Demo-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtu.be/your-demo-video-id)
 
+> **Comprehensive video walkthrough demonstrating:**
+> - 📊 Dashboard overview and real-time updates
+> - 🔍 Issue filtering and search functionality  
+> - 📥 Export capabilities (CSV/JSON)
+> - 🌙 Theme switching and responsive design
+> - ♿ Accessibility features and keyboard navigation
 
-## 📷 Images
-file:///home/anupam/Pictures/Screenshots/Screenshot%20from%202025-06-20%2014-34-00.png
-file:///home/anupam/Pictures/Screenshots/Screenshot%20from%202025-06-20%2014-34-07.png
-file:///home/anupam/Pictures/Screenshots/Screenshot%20from%202025-06-20%2014-34-14.png
-file:///home/anupam/Pictures/Screenshots/Screenshot%20from%202025-06-20%2014-34-21.png
-file:///home/anupam/Pictures/Screenshots/Screenshot%20from%202025-06-20%2014-34-30.png
+*Note: Replace `your-demo-video-id` with your actual YouTube video ID once uploaded*
+
+## 📸 Screenshots
+
 
 
 ## 🚀 Getting Started
@@ -311,35 +315,6 @@ COPY . .
 RUN npm run build
 EXPOSE 3000
 CMD ["npm", "start"]
-```
-
-## 🤝 Contributing
-
-We welcome contributions! Please follow these steps:
-
-1. **Fork the repository**
-2. **Create a feature branch**: `git checkout -b feature/amazing-feature`
-3. **Commit changes**: `git commit -m 'Add amazing feature'`
-4. **Push to branch**: `git push origin feature/amazing-feature`
-5. **Open a Pull Request**
-
-### Development Guidelines
-- Follow TypeScript best practices
-- Maintain accessibility standards
-- Write comprehensive tests
-- Update documentation for new features
-- Follow the existing code style and conventions
-
-### Code Style
-```bash
-# Format code
-npm run format
-
-# Lint code
-npm run lint
-
-# Type check
-npm run type-check
 ```
 
 ## 🙏 Acknowledgments
