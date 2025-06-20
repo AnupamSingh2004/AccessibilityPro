@@ -1,3 +1,8 @@
+
+
+
+
+
 # AccessibilityPro - WCAG Compliance Platform
 
 [![Vercel](https://img.shields.io/badge/vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://accessibility-pro.vercel.app)
@@ -32,18 +37,15 @@ A modern, responsive, and accessible React.js application for monitoring and imp
 
 ## 🎥 Demo Video
 
-[![Demo Video](https://img.shields.io/badge/▶️_Watch_Demo-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtu.be/your-demo-video-id)
+https://github.com/user-attachments/assets/bb64afa5-10c2-4ccf-8a2d-3ec004f4a31f
 
-> **Comprehensive video walkthrough demonstrating:**
-> - 📊 Dashboard overview and real-time updates
-> - 🔍 Issue filtering and search functionality  
-> - 📥 Export capabilities (CSV/JSON)
-> - 🌙 Theme switching and responsive design
-> - ♿ Accessibility features and keyboard navigation
-
-*Note: Replace `your-demo-video-id` with your actual YouTube video ID once uploaded*
 
 ## 📸 Screenshots
+![Screenshot from 2025-06-20 14-34-00](https://github.com/user-attachments/assets/634cbb5a-8b92-45e4-863a-d331eeeec59d)
+![Screenshot from 2025-06-20 14-34-07](https://github.com/user-attachments/assets/3ab6dfd3-6854-493d-a5f3-7428fa5a6a53)
+![Screenshot from 2025-06-20 14-34-14](https://github.com/user-attachments/assets/dd15a812-4415-4132-ad63-6f08fd623744)
+![Screenshot from 2025-06-20 14-34-21](https://github.com/user-attachments/assets/488776f5-8f7c-4d96-bcd7-7827613610e1)
+![Screenshot from 2025-06-20 14-34-30](https://github.com/user-attachments/assets/dda8d085-1c97-4f1a-8fbb-9db0bdc0cd6c)
 
 
 
