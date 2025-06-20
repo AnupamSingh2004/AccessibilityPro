@@ -25,8 +25,7 @@ export function IssuesPage() {
   const [selectedIssue, setSelectedIssue] = useState<AccessibilityIssue | null>(null)
   const [contentLoaded, setContentLoaded] = useState(false)
   const [mounted, setMounted] = useState(false)
-  
-  // Use custom hooks for cleaner state management
+
   const {
     mounted: localStorageMounted,
     searchQuery,
@@ -119,10 +118,10 @@ export function IssuesPage() {
     return colors[status as keyof typeof colors] || "bg-gray-50 text-gray-700 border-gray-200 dark:bg-gray-900/20 dark:text-gray-400 dark:border-gray-800"
   }
 
-  const pageContent = (
-    <div className="flex flex-col h-[calc(100vh-2rem)] animate-stagger-fast">
+const pageContent = (
+    <div className="mobile-content-wrapper animate-stagger-fast">
       {/* Fixed Header Section */}
-      <div className="flex-shrink-0 space-y-4 pb-4">
+      <div className="mobile-header-section space-y-4 pb-4">
         <div className="animate-slide-down">
           <IssuesHeader
             showAllProjects={showAllProjects}
@@ -157,9 +156,9 @@ export function IssuesPage() {
       </div>
 
       {/* Scrollable Issues Container */}
-      <div className="flex-1 min-h-0">
-        <Card className="border-0 shadow-xl bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl h-full flex flex-col">
-          <CardContent className="p-0 flex-1 flex flex-col">
+      <div className="mobile-scroll-section">
+        <Card className="border-0 shadow-xl bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl mobile-issues-card">
+          <CardContent className="p-0 h-full flex flex-col">
             {/* Container Header */}
             <div className="flex-shrink-0 px-4 py-3 border-b border-gray-200/50 dark:border-gray-700/50 sm:px-6 sm:py-4">
               <div className="flex items-center justify-between">
@@ -171,7 +170,7 @@ export function IssuesPage() {
                     ({processedIssues.length} {processedIssues.length === 1 ? 'issue' : 'issues'})
                   </span>
                 </div>
-                <div className="text-xs text-gray-400 dark:text-gray-500 flex items-center gap-1">
+                <div className="text-xs text-gray-400 dark:text-gray-500 flex items-center gap-1 hide-below-sm">
                   <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
                   </svg>
@@ -182,10 +181,8 @@ export function IssuesPage() {
 
             {/* Scrollable Content Area */}
             <div 
-              className="flex-1 overflow-y-auto px-4 py-4 custom-scrollbar touch-auto sm:px-6"
+              className="flex-1 overflow-y-auto px-3 py-3 custom-scrollbar touch-auto sm:px-4 sm:py-4 lg:px-6 mobile-scroll-container"
               style={{ 
-                minHeight: '200px',
-                maxHeight: 'calc(100vh - 30rem)', // Adjust for header and padding
                 WebkitOverflowScrolling: 'touch',
                 overscrollBehavior: 'contain',
                 overflowX: 'hidden'
@@ -249,7 +246,7 @@ export function IssuesPage() {
   return (
     <PageWrapper 
       skeleton={<IssuesPageSkeleton />}
-      className="h-screen overflow-hidden p-2 sm:p-4 md:p-6 lg:p-8"
+      className="mobile-page-container p-2 sm:p-4 md:p-6 lg:p-8"
     >
       {(!localStorageMounted || !themeMounted || !contentLoaded) ? (
         <IssuesPageSkeleton />

@@ -692,6 +692,74 @@ h1, h2, h3, h4, h5, h6 {
     background-color: rgb(107 114 128);
   }
 
+ .mobile-scroll-container {
+    /* Mobile: Much larger minimum height */
+    min-height: 60vh; /* 60% of viewport height on mobile */
+    max-height: 70vh; /* 70% of viewport height on mobile */
+    height: auto;
+  }
+
+  /* Small mobile devices */
+  @media (max-width: 480px) {
+    .mobile-scroll-container {
+      min-height: 50vh;
+      max-height: 60vh;
+    }
+  }
+
+  /* Tablet */
+  @media (min-width: 640px) and (max-width: 1023px) {
+    .mobile-scroll-container {
+      min-height: 55vh;
+      max-height: 65vh;
+    }
+  }
+
+  /* Desktop */
+  @media (min-width: 1024px) {
+    .mobile-scroll-container {
+      min-height: 400px;
+      max-height: calc(100vh - 28rem);
+    }
+  }
+
+  /* Force the parent card to have proper height on mobile */
+  .mobile-issues-card {
+    height: auto;
+    min-height: 70vh;
+  }
+
+  @media (min-width: 1024px) {
+    .mobile-issues-card {
+      height: calc(100vh - 20rem);
+      min-height: auto;
+    }
+  }
+
+  /* Ensure proper layout on mobile */
+  .mobile-page-container {
+    height: 100vh;
+    height: 100dvh; /* Dynamic viewport height for mobile browsers */
+    overflow: hidden;
+  }
+
+  .mobile-content-wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobile-header-section {
+    flex-shrink: 0;
+  }
+
+  .mobile-scroll-section {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
   /* Mobile scrollbar - more visible */
   @media (max-width: 767px) {
     .scroll-container {
